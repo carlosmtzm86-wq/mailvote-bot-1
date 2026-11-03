@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voting by mail: state guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F3F5F8; --surface: #FFFFFF; --ink: #18202E; --muted: #566273;
+    --blue: #24509A; --red: #B4232A; --line: #D5DBE4;
+    --sans: "Public Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --paper: #121822; --surface: #1A2230; --ink: #E6EAF0; --muted: #A0ABBA;
+      --blue: #93B4F2; --red: #F09A9A; --line: #2E3848;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.5; }
+
+  .airmail { height: 10px; background: repeating-linear-gradient(-45deg, var(--red) 0 14px, var(--paper) 14px 22px, var(--blue) 22px 36px, var(--paper) 36px 44px); }
+
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 0 1.25rem; }
+  .newsroom { margin: 1.25rem 0 0; font-weight: 600; color: var(--muted); font-size: .95rem; }
+
+  .lookup { padding: 2.5rem 0 2rem; border-bottom: 2px solid var(--ink); }
+  h1 { font-family: var(--sans); font-weight: 800; font-size: clamp(2.25rem, 7vw, 3.5rem); line-height: 1.02; letter-spacing: -.02em; margin: 0; }
+  .election { margin: .5rem 0 2rem; font-family: var(--serif); font-size: 1.25rem; color: var(--muted); }
+
+  label { display: block; font-weight: 600; margin-bottom: .5rem; }
+  .row { display: flex; gap: .5rem; flex-wrap: wrap; }
+  input[type=text] {
+    flex: 1 1 14rem; min-width: 0; font: inherit; font-size: 1.125rem; padding: .75rem .9rem;
+    color: var(--ink); background: var(--surface); border: 2px solid var(--ink); border-radius: 4px;
+  }
+  button { font: inherit; cursor: pointer; }
+  .submit { padding: .75rem 1.25rem; font-weight: 600; color: #fff; background: var(--blue); border: 2px solid var(--blue); border-radius: 4px; }
+  @media (prefers-color-scheme: dark) { .submit { color: #10192A; } }
+  .quick { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; align-items: center; }
+  .quick::before { content: "Available now:"; color: var(--muted); font-size: .95rem; margin-right: .25rem; }
+  .chip { padding: .4rem .9rem; background: transparent; color: var(--blue); border: 1.5px solid var(--blue); border-radius: 999px; font-weight: 600; font-size: .95rem; }
+  .chip:hover { background: var(--blue); color: var(--surface); }
+  :focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+
+  #view { padding: 2rem 0 1rem; min-height: 12rem; }
+  h2 { font-size: 1.5rem; line-height: 1.2; margin: 0 0 1rem; }
+
+  .result dl { margin: 0; }
+  .fact { padding: 1rem 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(9rem, 13rem) 1fr; gap: .25rem 1.5rem; }
+  .fact:first-child { border-top: 0; padding-top: 0; }
+  dt { font-weight: 600; color: var(--muted); font-size: .95rem; }
+  dd { margin: 0; font-family: var(--serif); font-size: 1.125rem; line-height: 1.6; white-space: pre-line; overflow-wrap: anywhere; }
+  dd.blank, p.blank { font-family: var(--sans); font-size: 1rem; color: var(--muted); font-style: italic; }
+  @media (max-width: 34rem) { .fact { grid-template-columns: 1fr; } }
+
+  a { color: var(--blue); text-underline-offset: 2px; }
+  .kicker { margin: 0 0 .25rem; font-weight: 600; color: var(--red); font-size: .95rem; }
+  .result h2 { font-size: clamp(1.75rem, 5vw, 2.25rem); letter-spacing: -.01em; margin-bottom: .25rem; }
+  .updated { margin: 0 0 1.5rem; color: var(--muted); font-size: .95rem; }
+  .cited { margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid var(--ink); font-size: .95rem; }
+  .cited h3 { font-size: 1rem; margin: 0 0 .5rem; }
+  .cited ul { margin: 0; padding-left: 1.1rem; }
+  .cited li { overflow-wrap: anywhere; margin: .2rem 0; }
+  .back { margin-top: 1.5rem; padding: .6rem 1rem; background: transparent; color: var(--ink); border: 2px solid var(--ink); border-radius: 4px; font-weight: 600; }
+
+  .notice { padding: 1rem 1.25rem; border-left: 4px solid var(--red); background: var(--surface); margin-bottom: 1.5rem; }
+  .notice p { margin: 0; }
+  .notice h2 { margin-bottom: .5rem; }
+
+  .sources h2 { font-size: 1.15rem; }
+  .sources ul { list-style: none; margin: 0; padding: 0; }
+  .sources li { padding: .75rem 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; }
+  .sources li a { font-weight: 600; font-size: 1.1rem; }
+  .sources li span { color: var(--muted); font-size: .95rem; }
+
+  footer { padding: 1.5rem 0 3rem; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); }
+  footer p { margin: .25rem 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+  <div class="airmail" aria-hidden="true"></div>
+  <div class="wrap">
+    <header><p class="newsroom" id="newsroom"></p></header>
+    <main>
+      <section class="lookup">
+        <h1>Voting by mail</h1>
+        <p class="election" id="election"></p>
+        <form id="lookup-form" role="search" autocomplete="off">
+          <label for="state-input">Which state do you vote in?</label>
+          <div class="row">
+            <input type="text" id="state-input" list="state-list" placeholder="Type a state, like Michigan or D.C.">
+            <button type="submit" class="submit">Show my state</button>
+          </div>
+          <datalist id="state-list"></datalist>
+        </form>
+        <div class="quick" id="quick"></div>
+      </section>
+      <section id="view" aria-live="polite"></section>
+    </main>
+    <footer>
+      <p id="status" role="status">If this message stays, JavaScript isn’t running. Open this file in a regular browser tab.</p>
+      <p id="credit"></p>
+    </footer>
+  </div>
+  <script>
+/* ===== SETTINGS: edit these ===== */
+window.BOT_CONFIG = {
+  SHEET_CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSx_t89F7L_WAl4kvZQdo8O_tS33QjaxWBInDw3Y3O0x6lslwnS1lhJEykkM7XktMYWawrzxg6AMXp7/pub?output=csv",
+  REFRESH_MINUTES: 5,
+  NEWSROOM: "Your Newsroom",
+  ELECTION: "Nov. 3, 2026, general election",
+  // Optional: states the tool will show. Add codes here as your data is completed.
+  ENABLED_STATES: ["DC", "MI"]
+};
+</script>
+  <script>
+(function () {
+  "use strict";
+
+  if (!window.BOT_CONFIG) console.error("config.js didn’t load. Keep it in the same folder as the page.");
+  var CFG = Object.assign(
+    { REFRESH_MINUTES: 5, NEWSROOM: "", ELECTION: "", ENABLED_STATES: ["DC", "MI"] },
+    window.BOT_CONFIG || {}
+  );
+  var ENABLED = CFG.ENABLED_STATES.map(function (s) { return String(s).toUpperCase(); });
+  var BLANK_MSG = "Information is not available; please check with your local elections website.";
+
+  // Names only, used to recognize what a reader types. No election facts live here.
+  var STATES = {
+    AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas", CA: "California",
+    CO: "Colorado", CT: "Connecticut", DE: "Delaware", DC: "District of Columbia",
+    FL: "Florida", GA: "Georgia", HI: "Hawaii", ID: "Idaho", IL: "Illinois",
+    IN: "Indiana", IA: "Iowa", KS: "Kansas", KY: "Kentucky", LA: "Louisiana",
+    ME: "Maine", MD: "Maryland", MA: "Massachusetts", MI: "Michigan", MN: "Minnesota",
+    MS: "Mississippi", MO: "Missouri", MT: "Montana", NE: "Nebraska", NV: "Nevada",
+    NH: "New Hampshire", NJ: "New Jersey", NM: "New Mexico", NY: "New York",
+    NC: "North Carolina", ND: "North Dakota", OH: "Ohio", OK: "Oklahoma", OR: "Oregon",
+    PA: "Pennsylvania", RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota",
+    TN: "Tennessee", TX: "Texas", UT: "Utah", VT: "Vermont", VA: "Virginia",
+    WA: "Washington", WV: "West Virginia", WI: "Wisconsin", WY: "Wyoming"
+  };
+  var DISPLAY = Object.assign({}, STATES, { DC: "Washington, D.C." });
+
+  function norm(s) {
+    return String(s || "").toLowerCase().replace(/[.,]/g, "").replace(/\s+/g, " ").trim();
+  }
+  var ALIASES = {};
+  Object.keys(STATES).forEach(function (code) {
+    ALIASES[norm(code)] = code;
+    ALIASES[norm(STATES[code])] = code;
+  });
+  ["dc", "d c", "washington dc", "washington d c", "the district", "district of columbia"]
+    .forEach(function (a) { ALIASES[a] = "DC"; });
+
+  function toCode(text) {
+    var n = norm(text);
+    if (!n) return null;
+    if (ALIASES[n]) return ALIASES[n];
+    var stripped = n.replace(/^(state of|i live in|i vote in|in)\s+/, "");
+    return ALIASES[stripped] || null;
+  }
+
+  // RFC 4180 CSV parser: handles quoted commas, quotes and line breaks.
+  function parseCSV(text) {
+    text = text.replace(/^\uFEFF/, "");
+    var rows = [], row = [], field = "", i = 0, q = false, c;
+    while (i < text.length) {
+      c = text[i];
+      if (q) {
+        if (c === '"') {
+          if (text[i + 1] === '"') { field += '"'; i++; } else { q = false; }
+        } else { field += c; }
+      } else if (c === '"') { q = true; }
+      else if (c === ",") { row.push(field); field = ""; }
+      else if (c === "\n" || c === "\r") {
+        if (c === "\r" && text[i + 1] === "\n") i++;
+        row.push(field); rows.push(row); row = []; field = "";
+      } else { field += c; }
+      i++;
+    }
+    if (field !== "" || row.length) { row.push(field); rows.push(row); }
+    return rows;
+  }
+
+  // Friendly labels and display order for the sheet's columns. Edit freely.
+  // Any column not listed here still shows, labeled from its header.
+  var LABELS = {
+    request_process: "How to get a mail ballot",
+    request_deadline: "Deadline to request a ballot",
+    mail_in_deadline: "Deadline to return your ballot",
+    id_required: "ID requirements",
+    official_link: "Official election website"
+  };
+  var ORDER = ["request_process", "request_deadline", "mail_in_deadline", "id_required", "official_link"];
+  var META = ["state_id", "state_name", "state", "last_updated", "sources"];
+
+  function prettify(h) {
+    var t = String(h).replace(/[_]+/g, " ").trim();
+    return t ? t.charAt(0).toUpperCase() + t.slice(1) : "Additional information";
+  }
+
+  // Turns the sheet into { CODE: { name, updated, sources, fields: [{label, value}] } }.
+  function buildData(rows) {
+    rows = rows.filter(function (r) { return r.some(function (c) { return c.trim() !== ""; }); });
+    var out = {};
+    if (rows.length < 2) return out;
+    var headers = rows[0].map(function (h) { return h.trim(); });
+    var keys = headers.map(function (h) { return h.toLowerCase().replace(/\s+/g, "_"); });
+    var col = function (k) { return keys.indexOf(k); };
+    var idCol = col("state_id") !== -1 ? col("state_id") : col("state");
+    var nameCol = col("state_name");
+    if (idCol === -1 && nameCol === -1) return out;
+
+    var fieldCols = ORDER.map(col).filter(function (i) { return i !== -1; });
+    keys.forEach(function (k, i) {
+      if (fieldCols.indexOf(i) === -1 && META.indexOf(k) === -1) fieldCols.push(i);
+    });
+
+    rows.slice(1).forEach(function (r) {
+      var cell = function (i) { return i === -1 ? "" : (r[i] || "").trim(); };
+      var code = toCode(cell(idCol)) || toCode(cell(nameCol));
+      if (!code || out[code]) return;
+      var fields = [];
+      fieldCols.forEach(function (i) {
+        var v = cell(i);
+        if (!headers[i] && !v) return;
+        fields.push({ label: LABELS[keys[i]] || prettify(headers[i]), value: v });
+      });
+      out[code] = {
+        name: cell(nameCol),
+        updated: cell(col("last_updated")),
+        sources: col("sources") === -1 ? null : cell(col("sources")),
+        fields: fields
+      };
+    });
+    return out;
+  }
+
+  // "2026-11-02" -> "Nov. 2, 2026" (AP style). Anything else shows as typed.
+  var AP_MONTHS = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+  function apDate(v) {
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(v);
+    if (!m || +m[2] < 1 || +m[2] > 12) return v;
+    return AP_MONTHS[+m[2] - 1] + " " + (+m[3]) + ", " + m[1];
+  }
+
+  // ---------- DOM helpers ----------
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      if (k === "text") n.textContent = attrs[k];
+      else if (k === "class") n.className = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    });
+    (kids || []).forEach(function (k) { if (k) n.appendChild(typeof k === "string" ? document.createTextNode(k) : k); });
+    return n;
+  }
+
+  // Shows cell text as typed, turning web addresses into links.
+  function richText(value) {
+    var frag = document.createDocumentFragment();
+    var re = /(https?:\/\/[^\s<>"]+|www\.[^\s<>"]+)/gi, last = 0, m;
+    while ((m = re.exec(value))) {
+      var url = m[0].replace(/[).,;:!?]+$/, "");
+      if (m.index > last) frag.appendChild(document.createTextNode(value.slice(last, m.index)));
+      frag.appendChild(el("a", {
+        href: /^http/i.test(url) ? url : "https://" + url, target: "_blank", rel: "noopener noreferrer", text: url
+      }));
+      last = m.index + url.length;
+      re.lastIndex = last;
+    }
+    if (last < value.length) frag.appendChild(document.createTextNode(value.slice(last)));
+    return frag;
+  }
+
+  var SOURCES = [
+    { name: "Vote.org", url: "https://www.vote.org/", note: "Nonpartisan guides to registering and voting in every state." },
+    { name: "Vote.gov", url: "https://vote.gov/", note: "The U.S. government’s directory of state election offices." },
+    { name: "CanIVote.org", url: "https://www.canivote.org/", note: "From the National Association of Secretaries of State." }
+  ];
+
+  function sourcesBlock(heading) {
+    return el("section", { class: "sources" }, [
+      el("h2", { text: heading }),
+      el("ul", null, SOURCES.map(function (s) {
+        return el("li", null, [
+          el("a", { href: s.url, target: "_blank", rel: "noopener noreferrer", text: s.name }),
+          el("span", { text: s.note })
+        ]);
+      }))
+    ]);
+  }
+
+  // ---------- State ----------
+  var data = null, rawText = null, lastOk = null, lastError = false, errReason = "", current = null, notFound = null;
+  var view = document.getElementById("view");
+  var statusEl = document.getElementById("status");
+  var input = document.getElementById("state-input");
+
+  function timeStr(d) {
+    return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  }
+
+  function renderStatus() {
+    if (!lastOk && !lastError) { statusEl.textContent = "Loading the latest information…"; return; }
+    if (lastError && lastOk) { statusEl.textContent = "Couldn’t reach the data just now. Showing information as of " + timeStr(lastOk) + "."; return; }
+    if (lastError) { statusEl.textContent = "The data couldn’t be loaded. It will try again automatically."; return; }
+    statusEl.textContent = "Information checked at " + timeStr(lastOk) + ". It refreshes every " + CFG.REFRESH_MINUTES + " minutes.";
+  }
+
+  function render() {
+    view.textContent = "";
+    renderStatus();
+
+    if (lastError && !data) {
+      var retry = el("button", { type: "button", class: "back", text: "Try again" });
+      retry.addEventListener("click", function () { lastError = false; render(); load(); });
+      view.appendChild(el("div", { class: "notice", role: "alert" }, [
+        el("h2", { text: "The voting information couldn’t be loaded" }),
+        el("p", { text: errReason }),
+        retry
+      ]));
+      view.appendChild(sourcesBlock("In the meantime, these sources can help"));
+      return;
+    }
+
+    if (notFound) {
+      view.appendChild(el("div", { class: "notice" }, [
+        el("p", { text: "We couldn’t match “" + notFound + "” to a state. Try the full name, like Michigan, or a two-letter abbreviation, like MI." })
+      ]));
+      view.appendChild(sourcesBlock("Or start with these trusted sources"));
+      return;
+    }
+
+    if (!current) {
+      view.appendChild(sourcesBlock("Looking for another state? Start with these trusted sources"));
+      return;
+    }
+
+    var name = DISPLAY[current];
+
+    if (ENABLED.indexOf(current) === -1) {
+      view.appendChild(el("div", { class: "notice" }, [
+        el("h2", { text: name }),
+        el("p", { text: "We’re still verifying mail-in voting information for " + name + ". Until it’s ready, these sources can help." })
+      ]));
+      view.appendChild(sourcesBlock("Trusted sources"));
+      return;
+    }
+
+    if (!data) {
+      view.appendChild(el("div", { class: "notice" }, [
+        el("h2", { text: name }),
+        el("p", { text: lastError ? "The information for " + name + " couldn’t be loaded. It will try again automatically." : "Loading information for " + name + "…" })
+      ]));
+      if (lastError) view.appendChild(sourcesBlock("In the meantime"));
+      return;
+    }
+
+    var rec = data[current];
+    var article = el("article", { class: "result", "aria-labelledby": "result-title" });
+    article.appendChild(el("p", { class: "kicker", text: "Voting by mail" }));
+    article.appendChild(el("h2", { id: "result-title", text: (rec && rec.name) || name }));
+    if (rec && rec.updated) article.appendChild(el("p", { class: "updated", text: "Last updated " + apDate(rec.updated) }));
+
+    if (!rec || !rec.fields.length) {
+      article.appendChild(el("p", { class: "blank", text: BLANK_MSG }));
+    } else {
+      var dl = el("dl");
+      rec.fields.forEach(function (f) {
+        var dd = el("dd");
+        if (f.value) dd.appendChild(richText(f.value));
+        else { dd.className = "blank"; dd.textContent = BLANK_MSG; }
+        dl.appendChild(el("div", { class: "fact" }, [el("dt", { text: f.label }), dd]));
+      });
+      article.appendChild(dl);
+    }
+
+    if (rec && rec.sources !== null) {
+      var src = el("div", { class: "cited" }, [el("h3", { text: "Sources" })]);
+      var parts = rec.sources.split(/\s*;\s*/).filter(Boolean);
+      if (!parts.length) src.appendChild(el("p", { class: "blank", text: BLANK_MSG }));
+      else src.appendChild(el("ul", null, parts.map(function (p) { return el("li", null, [richText(p)]); })));
+      article.appendChild(src);
+    }
+    article.appendChild(el("button", { type: "button", class: "back", id: "back", text: "Look up another state" }));
+    view.appendChild(article);
+    document.getElementById("back").addEventListener("click", function () {
+      go(null); input.value = ""; input.focus();
+    });
+  }
+
+  function go(code, typed) {
+    current = code; notFound = typed || null;
+    var hash = code ? "#" + code.toLowerCase() : "";
+    if (location.hash !== hash) history.replaceState(null, "", location.pathname + location.search + hash);
+    render();
+  }
+
+  // ---------- Data loading ----------
+  function load() {
+    if (!/^https?:\/\//.test(CFG.SHEET_CSV_URL || "")) {
+      errReason = "No sheet link is set. Put your published CSV link in SHEET_CSV_URL.";
+      lastError = true; render(); return Promise.resolve();
+    }
+    return fetch(CFG.SHEET_CSV_URL, { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+      .then(function (text) {
+        var changed = text !== rawText;
+        if (/^\s*<(!doctype|html)/i.test(text)) throw new Error("not-csv");
+        rawText = text; lastOk = new Date(); lastError = false;
+        if (changed) { data = buildData(parseCSV(text)); render(); }
+        else renderStatus();
+      })
+      .catch(function (err) {
+        console.error("Sheet refresh failed:", err);
+        errReason = String(err).indexOf("not-csv") !== -1
+          ? "The link returned a web page instead of CSV data. In Google Sheets, use File > Share > Publish to web, choose Comma-separated values (.csv), and copy that link."
+          : /HTTP/.test(String(err))
+          ? "The sheet link answered with an error (" + err.message + "). In Google Sheets, check File > Share > Publish to web, choose CSV, and copy that link."
+          : "This page couldn’t reach the Google Sheet. Open the file in a regular browser tab (Chrome, Safari, Firefox or Edge) rather than a preview window, and check that the sheet is published to the web as CSV.";
+        lastError = true;
+        data ? renderStatus() : render();
+      });
+  }
+
+  // ---------- Wire up ----------
+  document.getElementById("election").textContent = CFG.ELECTION;
+  document.getElementById("newsroom").textContent = CFG.NEWSROOM;
+  document.getElementById("credit").textContent = CFG.NEWSROOM
+    ? "Compiled by " + CFG.NEWSROOM + ". Confirm details with your local election office."
+    : "Confirm details with your local election office.";
+
+  var list = document.getElementById("state-list");
+  var quick = document.getElementById("quick");
+  ENABLED.forEach(function (code) {
+    if (!DISPLAY[code]) return;
+    list.appendChild(el("option", { value: DISPLAY[code] }));
+    var b = el("button", { type: "button", class: "chip", text: DISPLAY[code] });
+    b.addEventListener("click", function () { input.value = DISPLAY[code]; go(code); });
+    quick.appendChild(b);
+  });
+
+  document.getElementById("lookup-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var typed = input.value.trim();
+    if (!typed) { go(null); return; }
+    var code = toCode(typed);
+    code ? go(code) : go(null, typed);
+  });
+
+  window.addEventListener("hashchange", function () { go(toCode(location.hash.slice(1))); });
+
+  var start = toCode(location.hash.slice(1));
+  if (start) input.value = DISPLAY[start];
+  go(start);
+  load();
+
+  var everyMs = Math.max(1, Number(CFG.REFRESH_MINUTES) || 5) * 60 * 1000;
+  setInterval(load, everyMs);
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden && (!lastOk || Date.now() - lastOk > everyMs)) load();
+  });
+
+  window.__mailVoteBot = { parseCSV: parseCSV, buildData: buildData, toCode: toCode };
+})();
+</script>
+</body>
+</html>
