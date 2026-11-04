@@ -118,7 +118,7 @@ window.BOT_CONFIG = {
   NEWSROOM: "Your Newsroom",
   ELECTION: "Nov. 3, 2026, general election",
   // Optional: states the tool will show. Add codes here as your data is completed.
-  ENABLED_STATES: ["DC", "MI"]
+  ENABLED_STATES: ["DC", "MI", "OK", "WI", "WY"]
 };
 </script>
   <script>
@@ -127,7 +127,7 @@ window.BOT_CONFIG = {
 
   if (!window.BOT_CONFIG) console.error("config.js didn’t load. Keep it in the same folder as the page.");
   var CFG = Object.assign(
-    { REFRESH_MINUTES: 5, NEWSROOM: "", ELECTION: "", ENABLED_STATES: ["DC", "MI"] },
+    { REFRESH_MINUTES: 5, NEWSROOM: "", ELECTION: "", ENABLED_STATES: ["DC", "MI", "OK", "WI", "WY"] },
     window.BOT_CONFIG || {}
   );
   var ENABLED = CFG.ENABLED_STATES.map(function (s) { return String(s).toUpperCase(); });
