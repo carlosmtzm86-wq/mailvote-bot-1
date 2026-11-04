@@ -4,5 +4,5 @@ window.BOT_CONFIG = {
   NEWSROOM: "Your Newsroom",
   ELECTION: "Nov. 3, 2026, general election",
   // Optional: states the tool will show. Add codes here as your data is completed.
-  ENABLED_STATES: ["DC", "MI"]
+  ENABLED_STATES: ["DC", "MI","OK", "WY", "WI"]
 };
